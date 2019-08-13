@@ -1,0 +1,23 @@
+version: "3"
+services:
+  db:
+    container_name: ${DB_CONTAINER_NAME}
+    build: ./environments/docker/database/mysql/
+    image: ${DB_CONTAINER_IMAGE}
+    ports:
+      - "3306"
+    networks:
+      nat:
+        ipv4_address: ${DB_CONTAINER_IP}
+networks:
+  nat:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: ${NETWORK_SUBNET}
+volumes:
+  web_data:
+  db_data:
