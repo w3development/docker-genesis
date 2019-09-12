@@ -1,0 +1,11 @@
+.env
+
+
+# Exclude editors
+.vscode
+
+
+
+
+# Specific folders
+.history
