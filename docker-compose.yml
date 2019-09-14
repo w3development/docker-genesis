@@ -33,7 +33,14 @@ services:
       PMA_PORT: ${DB_CONTAINER_PORT}
     networks:
       nat:
-        ipv4_address: ${PHPMYADMIN_CONTAINER_IP} 
+        ipv4_address: ${PHPMYADMIN_CONTAINER_IP}
+  web:
+    container_name: ${WEB_CONTAINER_NAME}
+    build: ./environment/docker/php7.2/
+    image: ${WEB_CONTAINER_IMAGE}
+    networks:
+      nat:
+        ipv4_address: ${WEB_CONTAINER_IP}
 networks:
   nat:
     ipam:
