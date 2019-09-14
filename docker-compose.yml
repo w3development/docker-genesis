@@ -38,6 +38,13 @@ services:
     container_name: ${WEB_CONTAINER_NAME}
     build: ./environment/docker/php7.2/
     image: ${WEB_CONTAINER_IMAGE}
+    volumes:
+      - ./:/var/www/html
+      - ./environment/etc/apache2/vhosts:/etc/apache2/sites-enabled
+      - ./environment/etc/php/php.ini:/usr/local/etc/php/php.ini
+    environment:
+      - APACHE_DOCUMENT_ROOT=${APACHE_DOCUMENT_ROOT}
+      - DOMAIN=${DOMAIN}    
     networks:
       nat:
         ipv4_address: ${WEB_CONTAINER_IP}
