@@ -45,5 +45,10 @@ RUN docker-php-ext-install intl
 RUN docker-php-ext-install ctype
 RUN docker-php-ext-install tokenizer
 
+# Php GD Library
+RUN docker-php-ext-install gd
+RUN docker-php-ext-configure gd --enable-gd-native-ttf --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/include/freetype2
+RUN docker-php-ext-install gd
+
 # Suppress docker-compose message with missing 'ServerName' directive
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
