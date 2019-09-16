@@ -44,3 +44,6 @@ RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install intl
 RUN docker-php-ext-install ctype
 RUN docker-php-ext-install tokenizer
+
+# Suppress docker-compose message with missing 'ServerName' directive
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
