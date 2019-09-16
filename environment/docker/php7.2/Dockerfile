@@ -52,3 +52,10 @@ RUN docker-php-ext-install gd
 
 # Suppress docker-compose message with missing 'ServerName' directive
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
+    -keyout /etc/ssl/private/ssl-cert-docker.key \
+    -out /etc/ssl/certs/ssl-cert-docker.pem \
+    -subj "/C=AL/ST=Albania/L=Shkoder/O=W3Development/OU=SHPK/CN=Docker"
+
+RUN a2enmod ssl
