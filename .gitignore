@@ -1,11 +1,8 @@
 .env
 
-
 # Exclude editors
 .vscode
-
-
-
+.history
 
 # Specific folders
-.history
+environment/var/log

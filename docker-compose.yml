@@ -42,6 +42,7 @@ services:
       - ./:/var/www/html
       - ./environment/etc/apache2/vhosts:/etc/apache2/sites-enabled
       - ./environment/etc/php/php.ini:/usr/local/etc/php/php.ini
+      - ./environment/var/log:/var/log/apache2
     environment:
       - APACHE_DOCUMENT_ROOT=${APACHE_DOCUMENT_ROOT}
       - DOMAIN=${DOMAIN}    
