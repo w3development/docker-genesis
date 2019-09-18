@@ -38,7 +38,14 @@ services:
         ipv4_address: ${PHPMYADMIN_CONTAINER_IP}
   web:
     container_name: ${WEB_CONTAINER_NAME}
-    build: ./environment/docker/php7.2/
+    build:
+      context: ./environment/docker/php7.2/
+      args:
+        - VERSION=${VERSION}
+        - DOMAIN=${DOMAIN}
+        - EMAIL=${EMAIL}
+        - UID=${USER_ID}
+        - GID=${GROUP_ID}
     image: ${WEB_CONTAINER_IMAGE}
     volumes:
       - ./:/var/www/html

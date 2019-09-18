@@ -3,6 +3,8 @@ FROM php:7.2-apache
 ARG VERSION
 ARG DOMAIN
 ARG EMAIL
+ARG UID
+ARG GID
 
 LABEL version = ${VERSION}
 LABEL domain  = ${DOMAIN}
@@ -67,3 +69,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
 RUN chmod +x /root/.nvm/nvm.sh && /root/.nvm/nvm.sh
+
+RUN  usermod --non-unique --uid ${UID} www-data
+RUN groupmod --non-unique --gid ${GID} www-data
