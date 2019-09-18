@@ -59,3 +59,11 @@ RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
     -subj "/C=AL/ST=Albania/L=Shkoder/O=W3Development/OU=SHPK/CN=Docker"
 
 RUN a2enmod ssl
+
+# Installing composer from the composer docker image
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Installing Node manager.
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
+RUN chmod +x /root/.nvm/nvm.sh && /root/.nvm/nvm.sh
