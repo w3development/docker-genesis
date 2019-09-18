@@ -9,6 +9,8 @@ services:
         - DOMAIN=${DOMAIN}
         - EMAIL=${EMAIL}
     image: ${DB_CONTAINER_IMAGE}
+    volumes:
+      - ./environment/var/lib/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MYSQL_DATABASE=${DB_DATABASE}
