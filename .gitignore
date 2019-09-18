@@ -3,6 +3,3 @@
 # Exclude editors
 .vscode
 .history
-
-# Specific folders
-environment/var/log
