@@ -29,6 +29,7 @@ RUN apt-get install -y --no-install-recommends libssl-dev
 RUN apt-get install -y --no-install-recommends libssl-dev
 RUN apt-get install -y --no-install-recommends libmcrypt-dev
 RUN apt-get install -y --no-install-recommends locales
+RUN apt-get install -y --no-install-recommends default-mysql-client
 
 # Setting up locales
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
