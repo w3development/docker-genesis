@@ -60,7 +60,7 @@ RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
     -out /etc/ssl/certs/ssl-cert-docker.pem \
     -subj "/C=AL/ST=Albania/L=Shkoder/O=W3Development/OU=SHPK/CN=Docker"
 
-RUN a2enmod ssl
+RUN a2enmod ssl rewrite
 
 # Installing composer from the composer docker image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
