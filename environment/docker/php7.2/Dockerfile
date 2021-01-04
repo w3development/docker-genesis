@@ -26,10 +26,12 @@ RUN apt-get install -y --no-install-recommends libjpeg-dev
 RUN apt-get install -y --no-install-recommends libxml2-dev
 RUN apt-get install -y --no-install-recommends libfreetype6-dev
 RUN apt-get install -y --no-install-recommends libssl-dev
-RUN apt-get install -y --no-install-recommends libssl-dev
 RUN apt-get install -y --no-install-recommends libmcrypt-dev
 RUN apt-get install -y --no-install-recommends locales
 RUN apt-get install -y --no-install-recommends default-mysql-client
+RUN apt-get install -y --no-install-recommends msmtp
+RUN apt-get install -y --no-install-recommends sendmail
+RUN apt-get install -y --no-install-recommends mailutils
 
 # Setting up locales
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -55,6 +57,9 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug
 RUN docker-php-ext-install gd
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/include/freetype2
 RUN docker-php-ext-install gd
+
+# And clean up the image
+RUN rm -rf /var/lib/apt/lists/*
 
 # Suppress docker-compose message with missing 'ServerName' directive
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
